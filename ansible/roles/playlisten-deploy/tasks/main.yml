@@ -1,0 +1,11 @@
+- name: Copy the docker-compose code frome git
+  git: repo=https://github.com/tall15421542/Playlisten-deploy dest=/home/ubuntu/Playlisten-deploy
+
+- name: docker-compose up
+  community.docker.docker_compose:
+    project_src: /home/ubuntu/Playlisten-deploy/
+    state: present
+  register: output
+
+- ansible.builtin.debug:
+    var: output

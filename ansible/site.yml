@@ -1,0 +1,14 @@
+- hosts: localhost
+  tasks:
+    - name: delete the host identification to get ssh succeed when site is allocated in different host
+      known_hosts:
+        name: playlisten.app
+        state: absent
+
+- hosts: standalone_playlisten_instance
+  become: true
+  roles:
+    - docker-install
+    - playlisten-deploy
+  tags:
+    - standalone_ec2_instance

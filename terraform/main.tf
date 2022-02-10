@@ -13,6 +13,10 @@ module "vpc" {
   cidr                 = "10.0.0.0/16"
   azs                  = data.aws_availability_zones.available.names
   public_subnets = ["10.0.101.0/24"]
+
+  database_subnets = ["10.0.13.0/24", "10.0.14.0/24"]
+  create_database_subnet_group = true
+
   enable_dns_hostnames = true
   enable_dns_support   = true
 }
@@ -44,6 +48,15 @@ resource "aws_security_group" "standalone_playlisten_instance" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  ingress {
+    description = "allow mysql connection"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port        = 0
     to_port          = 0

@@ -17,3 +17,13 @@ variable "key_name" {
   default = "playlisten"
   description = "aws ssh key"
 }
+
+variable "db_pass" {
+  default = "playlisten"
+  description = "aws mysql password"
+}
+
+variable "rds_identifier" {
+  default = "playlisten-sql"
+  description = "rds endpoint"
+}

@@ -9,12 +9,12 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.77.0"
 
-  name                 = "playlisten"
-  cidr                 = "10.0.0.0/16"
-  azs                  = data.aws_availability_zones.available.names
+  name           = "playlisten"
+  cidr           = "10.0.0.0/16"
+  azs            = data.aws_availability_zones.available.names
   public_subnets = ["10.0.101.0/24"]
 
-  database_subnets = ["10.0.13.0/24", "10.0.14.0/24"]
+  database_subnets             = ["10.0.13.0/24", "10.0.14.0/24"]
   create_database_subnet_group = true
 
   enable_dns_hostnames = true
@@ -72,7 +72,7 @@ resource "aws_security_group" "standalone_playlisten_instance" {
 
 
 resource "aws_network_interface" "playlisten_network_interface" {
-  subnet_id   = module.vpc.public_subnets[0]
+  subnet_id       = module.vpc.public_subnets[0]
   security_groups = [aws_security_group.standalone_playlisten_instance.id]
 
   tags = {
@@ -96,7 +96,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 resource "aws_instance" "playlisten" {
-  ami = data.aws_ami.ubuntu.id
+  ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   network_interface {
     network_interface_id = aws_network_interface.playlisten_network_interface.id

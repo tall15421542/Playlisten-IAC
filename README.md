@@ -50,3 +50,8 @@ sh destroy.sh
 2. Make domain name ``playlisten.app`` configurable
     * Automate the process of cerbot SSL certificate registration and put it in the webserver container
     * Use variable to replace hard-coded "playlisten.app" in ``ansible/inventory/hosts``, ``ansible/site.yml``. 
+
+## Might be outdated someday...
+
+1. ``playlisten.app`` domain name
+2. ``playlisten.app`` SSL certificate installed on webserver container

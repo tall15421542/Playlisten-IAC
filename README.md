@@ -51,7 +51,24 @@ sh destroy.sh
     * Automate the process of cerbot SSL certificate registration and put it in the webserver container
     * Use variable to replace hard-coded "playlisten.app" in ``ansible/inventory/hosts``, ``ansible/site.yml``. 
 
-## Might be outdated someday...
+## Might be expired someday...
 
 1. ``playlisten.app`` domain name
 2. ``playlisten.app`` SSL certificate installed on webserver container
+
+## Troubleshooting
+### ``Certificate has expired`` error when frontend app issue the requests through https.
+
+#### Why
+The last certificate in the chain is expired authority ``DST Root CA X3``
+
+#### Solution 
+Simply edit the fullchain.pem file and remove the last certificate.
+
+#### Reference
+[Problem with certificate has expired](https://community.letsencrypt.org/t/problem-with-certificate-has-expired/161013)
+
+### How to update HTTPS certificated 
+#### Reference
+[HTTPS using Nginx and Let's encrypt in Docker](https://mindsers.blog/post/https-using-nginx-certbot-docker/)
+

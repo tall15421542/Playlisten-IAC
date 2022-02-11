@@ -68,7 +68,7 @@ Simply edit the fullchain.pem file and remove the last certificate.
 #### Reference
 [Problem with certificate has expired](https://community.letsencrypt.org/t/problem-with-certificate-has-expired/161013)
 
-### How to update HTTPS certificated 
+### How to update HTTPS Certificate
 #### Reference
 [HTTPS using Nginx and Let's encrypt in Docker](https://mindsers.blog/post/https-using-nginx-certbot-docker/)
 
